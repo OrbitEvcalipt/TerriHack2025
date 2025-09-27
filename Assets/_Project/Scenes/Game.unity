@@ -1850,6 +1850,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower_99
       objectReference: {fileID: 0}
+    - target: {fileID: 4653055871751852851, guid: 7b76e9b4fd8d4a14da85873ad81b58db, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5699748012826540237, guid: 7b76e9b4fd8d4a14da85873ad81b58db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.51
@@ -1889,6 +1893,14 @@ PrefabInstance:
     - target: {fileID: 5699748012826540237, guid: 7b76e9b4fd8d4a14da85873ad81b58db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264862840899617998, guid: 7b76e9b4fd8d4a14da85873ad81b58db, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7855879121759456556, guid: 7b76e9b4fd8d4a14da85873ad81b58db, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
