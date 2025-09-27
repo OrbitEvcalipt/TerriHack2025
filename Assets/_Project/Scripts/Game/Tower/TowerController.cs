@@ -151,7 +151,10 @@ namespace FunnyBlox
       Level = LevelTower();
 
       if (level != Level)
+      {
         _visualization.UpdateVisual(Level);
+        _towerConnections.UpdateEnabledConnections();
+      }
     }
   }
 }

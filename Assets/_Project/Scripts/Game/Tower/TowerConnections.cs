@@ -1,18 +1,13 @@
 ﻿using System.Collections.Generic;
+using Lean.Touch;
 using UnityEngine;
 
 namespace FunnyBlox
 {
-  [System.Serializable]
-  public class Connections
-  {
-    public TowerController Tower;
-    public Transform ConnectionPath;
-  }
-
   public class TowerConnections : MonoBehaviour
   {
     private TowerController _towerController;
+    private LeanSelectableByFinger _selectableByFinger;
     [SerializeField] private Transform _pathTransform;
 
     public List<Connections> Connections => _connections;
@@ -20,9 +15,14 @@ namespace FunnyBlox
 
     [SerializeField] private List<Connections> _connections;
 
+
+    public void UpdateEnabledConnections() =>
+      _selectableByFinger.enabled = !(_connections.Count >= _towerController.Level + 1);
+
     private void Start()
     {
       _towerController = GetComponent<TowerController>();
+      _selectableByFinger = GetComponent<LeanSelectableByFinger>();
       _connections = new List<Connections>();
     }
 
@@ -40,11 +40,14 @@ namespace FunnyBlox
           Tower = towerTo,
           ConnectionPath = path
         });
+
+      UpdateEnabledConnections();
     }
 
     public void OnDestroyConnection(TowerController towerTo)
     {
       IsConnected = false;
+      UpdateEnabledConnections();
     }
   }
 }
