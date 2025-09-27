@@ -55,6 +55,8 @@ namespace FunnyBlox
 
             return false;
         }
+
+        public void SetOffset(Vector2 pixelOffset) => _pixelOffset = pixelOffset;
     }
 
     [ExecuteInEditMode]
@@ -98,5 +100,7 @@ namespace FunnyBlox
             _canvasRectTransform = _canvasCached.GetComponent<RectTransform>();
             _rectTransformCached = GetComponent<RectTransform>();
         }
+
+        public void SetPixelOffset(Vector2 pixelOffset) => _anchor.SetOffset(pixelOffset);
     }
 }

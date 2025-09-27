@@ -104,6 +104,11 @@ MonoBehaviour:
   - {fileID: 8873679045055827160}
   - {fileID: 4896116700542571856}
   - {fileID: 161232163568627239}
+  _anchorToTransform: []
+  _pixelOffsets:
+  - {x: 0, y: 30}
+  - {x: 0, y: 55}
+  - {x: 0, y: 110}
   renderer:
   - {fileID: 8851348489612365156}
   - {fileID: 3161581470125052797}
