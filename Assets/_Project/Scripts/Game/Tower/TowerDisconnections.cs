@@ -12,7 +12,7 @@ namespace FunnyBlox
 
     private void Start()
     {
-      _layerMask = 1 << LayerMask.NameToLayer("ConnectionPath");
+      _layerMask = 1 << LayerMask.NameToLayer("Game");
     }
 
     void OnEnable()

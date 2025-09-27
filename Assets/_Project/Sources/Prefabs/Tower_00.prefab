@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: -5506741176282332613}
   - component: {fileID: 5500138823387902520}
   - component: {fileID: 5545212481143180930}
-  - component: {fileID: 2575285399301874422}
-  m_Layer: 0
+  - component: {fileID: 5384570757961874132}
+  m_Layer: 6
   m_Name: Tower_00
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -261,8 +261,8 @@ MonoBehaviour:
   onSelectedSelectFingerUp:
     m_PersistentCalls:
       m_Calls: []
---- !u!135 &2575285399301874422
-SphereCollider:
+--- !u!65 &5384570757961874132
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -280,8 +280,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &6321002284529808695
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,7 +508,9 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3168767914113343903, guid: 5c3dbf92c8c421a40be96bf9ab2cdaf9, type: 3}
+    - {fileID: 2670739914286106603, guid: 5c3dbf92c8c421a40be96bf9ab2cdaf9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -729,7 +731,9 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2695814212134410952, guid: a93304f8c1d31bf449b58da6060700c9, type: 3}
+    - {fileID: 1764498138772870510, guid: a93304f8c1d31bf449b58da6060700c9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -880,7 +884,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4102113887780486834, guid: f95d5d54dee193d429c5daf4126830ba, type: 3}
+    - {fileID: 6699972961602194480, guid: f95d5d54dee193d429c5daf4126830ba, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

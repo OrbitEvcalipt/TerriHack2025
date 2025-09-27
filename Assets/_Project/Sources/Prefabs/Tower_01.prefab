@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: -8087683699948857356}
   - component: {fileID: -1504078409360491188}
   - component: {fileID: 5545212481143180930}
-  - component: {fileID: 2575285399301874422}
-  m_Layer: 0
+  - component: {fileID: 3640717927611889192}
+  m_Layer: 6
   m_Name: Tower_01
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -187,8 +187,8 @@ MonoBehaviour:
   onSelectedSelectFingerUp:
     m_PersistentCalls:
       m_Calls: []
---- !u!135 &2575285399301874422
-SphereCollider:
+--- !u!65 &3640717927611889192
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -206,8 +206,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.2, y: 1, z: 1.2}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &7854268691745842072
 GameObject:
   m_ObjectHideFlags: 0
