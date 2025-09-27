@@ -23,8 +23,8 @@ namespace FunnyBlox
       _unitsFactory = GetComponent<UnitsFactory>();
       _visualization = GetComponent<TowerLevelVisualization>();
       Level = LevelTower();
-      _visualization.UpdateVisual(Level);
-      SetOwner(OwnerType);
+      _visualization.UpdateVisual(Level, null);
+      SetOwner(OwnerType, start:true);
       _selectionParticles.gameObject.SetActive(false);
     }
 
@@ -125,10 +125,14 @@ namespace FunnyBlox
       }
     }
 
-    private void SetOwner(ETowerOwnerType ownerType)
+    private void SetOwner(ETowerOwnerType ownerType, bool start = false)
     {
       OwnerType = ownerType;
-      _visualization.UpdateOwner(ownerType);
+      _visualization.UpdateOwner(ownerType, () =>
+      {
+        if (ownerType == ETowerOwnerType.Player && !start)
+          _upgradeParticles.Play();
+      });
     }
 
     public int LevelTower()
@@ -157,9 +161,8 @@ namespace FunnyBlox
 
       if (level != Level)
       {
-        _visualization.UpdateVisual(Level);
+        _visualization.UpdateVisual(Level, () => { _upgradeParticles.Play();});
         _towerConnections.UpdateEnabledConnections();
-        _upgradeParticles.Play();
       }
     }
   }
