@@ -59,6 +59,11 @@ namespace FunnyBlox
       _unitsFactory.StartProduction();
     }
 
+    public void OnDestroyConnection(Transform path)
+    {
+      _towerConnections.OnDestroyConnection(path);
+    }
+
     /// <summary>
     /// Что-то задело башню
     /// </summary>
