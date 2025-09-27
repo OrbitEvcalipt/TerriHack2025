@@ -5,7 +5,10 @@ namespace FunnyBlox
 {
   public class TowerController : MonoBehaviour
   {
-    public CommonData.ETowerType TowerType;
+    public ETowerOwnerType OwnerType;
+    public int HitPoints;
+    [SerializeField] private TowerData _towerData;
+    private TowerConnections _towerConnections;
 
     [SerializeField] private Transform bodyTransform;
 
@@ -14,16 +17,18 @@ namespace FunnyBlox
 
     private void Start()
     {
+      _towerConnections = GetComponent<TowerConnections>();
+
       Color bodyColor;
-      switch (TowerType)
+      switch (OwnerType)
       {
-        case CommonData.ETowerType.Neutral:
+        case ETowerOwnerType.Neutral:
           bodyColor = Color.grey;
           break;
-        case CommonData.ETowerType.Player:
+        case ETowerOwnerType.Player:
           bodyColor = Color.blue;
           break;
-        case CommonData.ETowerType.Enemy:
+        case ETowerOwnerType.Enemy:
           bodyColor = Color.red;
           break;
         default:
@@ -33,29 +38,48 @@ namespace FunnyBlox
       bodyTransform.GetComponent<Renderer>().material.SetColor("_BaseColor", bodyColor);
     }
 
+    /// <summary>
+    /// Выбрали башню
+    /// </summary>
     public void OnSelect()
     {
-      if (TowerType == CommonData.ETowerType.Player)
+      if (OwnerType == ETowerOwnerType.Player)
       {
         _isSelected = true;
         InputHandler.Instance.OnSelectTower(this);
       }
     }
 
+    /// <summary>
+    /// Отпустили башю
+    /// </summary>
     public void OnDeselect()
     {
-      if (TowerType == CommonData.ETowerType.Player)
+      if (OwnerType == ETowerOwnerType.Player)
       {
         _isSelected = false;
         InputHandler.Instance.OnDeselectTower();
       }
     }
 
+    /// <summary>
+    /// Создаём соединение с башней
+    /// </summary>
+    /// <param name="towerTo"></param>
+    public void OnCreateConnection(TowerController towerTo)
+    {
+      _towerConnections.OnCreateConnection(towerTo);
+    }
+
+    /// <summary>
+    /// Что-то задело башню
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
-      if (other.tag == "Point")
+      if (other.CompareTag("Point"))
       {
-        if (TowerType != CommonData.ETowerType.Player && !_isSelected)
+        if (OwnerType != ETowerOwnerType.Player && !_isSelected)
         {
           _isTriggered = true;
           EventsHandler.SelectTower(this);
@@ -63,14 +87,18 @@ namespace FunnyBlox
       }
     }
 
+    /// <summary>
+    /// Что-то вышло из башни
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerExit(Collider other)
     {
-      if (other.tag == "Point")
+      if (other.CompareTag("Point"))
       {
-        if (TowerType != CommonData.ETowerType.Player && _isTriggered)
+        if (OwnerType != ETowerOwnerType.Player && _isTriggered)
         {
           EventsHandler.DeselectTower(this);
-          
+
           _isTriggered = false;
         }
       }

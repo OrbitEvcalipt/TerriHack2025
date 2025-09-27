@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Point
+  - ship
+  - asteroid
+  - Unit
+  - Tower
   layers:
   - Default
   - TransparentFX

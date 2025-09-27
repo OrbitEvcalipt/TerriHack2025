@@ -1,8 +1,5 @@
-﻿using System;
-using Lean.Common;
-using Lean.Touch;
+﻿using Lean.Touch;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace FunnyBlox
 {
