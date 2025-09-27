@@ -11,7 +11,6 @@ namespace FunnyBlox
     [SerializeField] private Transform _pathTransform;
 
     public List<Connections> Connections => _connections;
-    public bool IsConnected { get; set; }
 
     [SerializeField] private List<Connections> _connections;
 
@@ -28,7 +27,6 @@ namespace FunnyBlox
 
     public void OnCreateConnection(TowerController towerTo)
     {
-      IsConnected = true;
       float lenght = Vector3.Distance(_towerController.transform.position, towerTo.transform.position);
       Transform path = Instantiate(_pathTransform, _towerController.transform.position, Quaternion.identity);
       path.LookAt(towerTo.transform.position);
@@ -46,15 +44,30 @@ namespace FunnyBlox
         });
 
       UpdateEnabledConnections();
+      
+      towerTo.OnDestroyConnection(_towerController);
     }
 
     public void OnDestroyConnection(Transform path)
     {
-      IsConnected = false;
-
       for (int i = 0; i < _connections.Count; i++)
       {
         if (_connections[i].ConnectionPath == path)
+        {
+          Destroy(_connections[i].ConnectionPath.gameObject);
+          _connections.RemoveAt(i);
+          break;
+        }
+      }
+
+      UpdateEnabledConnections();
+    }
+
+    public void OnDestroyConnection(TowerController tower)
+    {
+      for (int i = 0; i < _connections.Count; i++)
+      {
+        if (_connections[i].Tower == tower)
         {
           Destroy(_connections[i].ConnectionPath.gameObject);
           _connections.RemoveAt(i);

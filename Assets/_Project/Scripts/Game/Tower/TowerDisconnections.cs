@@ -58,7 +58,6 @@ namespace FunnyBlox
           if (hit.transform.TryGetComponent(out ConnectionPath connectionPath))
           {
             connectionPath.Tower.OnDestroyConnection(hit.transform);
-            Debug.Log("Попал в объект: " + hit.collider.gameObject.name);
           }
         }
       }
