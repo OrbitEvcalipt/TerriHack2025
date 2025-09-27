@@ -1995,7 +1995,7 @@ PrefabInstance:
     - target: {fileID: 150789099035829784, guid: 585d123996a00ce4f9240de1bd52496d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 3e33c7c71414f974d9674d08fe001d7c, type: 2}
+      objectReference: {fileID: 2100000, guid: 3a2b9314a175d694ebdee90b98c5563b, type: 2}
     - target: {fileID: 150789099038095576, guid: 585d123996a00ce4f9240de1bd52496d, type: 3}
       propertyPath: m_Name
       value: TSP_House_Wall_Short_13A (1)_01
@@ -2131,7 +2131,7 @@ PrefabInstance:
     - target: {fileID: 150789099035829784, guid: 585d123996a00ce4f9240de1bd52496d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 3e33c7c71414f974d9674d08fe001d7c, type: 2}
+      objectReference: {fileID: 2100000, guid: 3a2b9314a175d694ebdee90b98c5563b, type: 2}
     - target: {fileID: 150789099038095576, guid: 585d123996a00ce4f9240de1bd52496d, type: 3}
       propertyPath: m_Name
       value: TSP_House_Wall_Short_13A (1)
