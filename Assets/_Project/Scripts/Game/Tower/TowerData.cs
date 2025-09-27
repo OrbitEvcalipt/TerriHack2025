@@ -5,7 +5,7 @@ namespace FunnyBlox
   [CreateAssetMenu(menuName = "Data/TowerData", fileName = "TowerData", order = 52)]
   public class TowerData : ScriptableObject
   {
-    public ETowerPurposeType PurposeType;
+    public EUnitType UnitType;
     public float FactorySpeed;
   }
 }

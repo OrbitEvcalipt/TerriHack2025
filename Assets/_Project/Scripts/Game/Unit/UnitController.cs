@@ -31,9 +31,10 @@ namespace FunnyBlox
       float distance = Vector3.Distance(transform.position, targetPosition);
 
       transform.DOMove(targetPosition, distance / _unitData.Speed)
+        .SetEase(Ease.Linear)
         .OnComplete(Despawn);
     }
-    
+
     /// <summary>
     /// Что-то задело юнита
     /// </summary>
@@ -42,7 +43,6 @@ namespace FunnyBlox
     {
       if (other.CompareTag("Tower"))
       {
-        
       }
     }
   }

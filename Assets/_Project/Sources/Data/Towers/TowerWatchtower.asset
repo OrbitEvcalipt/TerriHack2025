@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bad524d85ad4ec4a1eb80b4f9e8012d, type: 3}
   m_Name: TowerWatchtower
   m_EditorClassIdentifier: 
-  PurposeType: 2
+  UnitType: 99
   FactorySpeed: 2

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5699748012826540237}
   - component: {fileID: 2246608600519170150}
   - component: {fileID: 9108360466768639238}
+  - component: {fileID: -5506741176282332613}
   - component: {fileID: 5545212481143180930}
   - component: {fileID: 2575285399301874422}
   m_Layer: 0
@@ -50,7 +51,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OwnerType: 0
   HitPoints: 10
-  _towerData: {fileID: 11400000, guid: af7e9a098e9116e4a8527890cb0d88c9, type: 2}
   bodyTransform: {fileID: 4766639060398664626}
 --- !u!114 &9108360466768639238
 MonoBehaviour:
@@ -66,6 +66,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pathTransform: {fileID: 6897795401820546316, guid: 417d42a1362a6c14d9e7fd7ec16e1741, type: 3}
   _connections: []
+--- !u!114 &-5506741176282332613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142277473683787643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ed3fb980de4b3bb43d9db92b76858d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TowerData: {fileID: 11400000, guid: af7e9a098e9116e4a8527890cb0d88c9, type: 2}
+  _prefabPaths:
+  - Units/UnitSoldier
+  - Units/UnitTank
 --- !u!114 &5545212481143180930
 MonoBehaviour:
   m_ObjectHideFlags: 0

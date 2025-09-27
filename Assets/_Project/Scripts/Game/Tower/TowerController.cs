@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace FunnyBlox
 {
@@ -7,8 +8,8 @@ namespace FunnyBlox
   {
     public ETowerOwnerType OwnerType;
     public int HitPoints;
-    [SerializeField] private TowerData _towerData;
     private TowerConnections _towerConnections;
+    private UnitsFactory _unitsFactory;
 
     [SerializeField] private Transform bodyTransform;
 
@@ -18,6 +19,7 @@ namespace FunnyBlox
     private void Start()
     {
       _towerConnections = GetComponent<TowerConnections>();
+      _unitsFactory= GetComponent<UnitsFactory>();
 
       Color bodyColor;
       switch (OwnerType)
@@ -69,8 +71,9 @@ namespace FunnyBlox
     public void OnCreateConnection(TowerController towerTo)
     {
       _towerConnections.OnCreateConnection(towerTo);
+      _unitsFactory.StartProduction();
     }
-
+    
     /// <summary>
     /// Что-то задело башню
     /// </summary>
