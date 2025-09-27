@@ -52,7 +52,7 @@ namespace FunnyBlox
     private IEnumerator ProductionRoutine()
     {
       WaitForSeconds wait =
-        new WaitForSeconds(1f / _towerController.TowerData.ProgressionData[_towerController.LevelTower()]
+        new WaitForSeconds(1f / _towerController.TowerData.ProgressionData[_towerController.Level]
           .FactorySpeed);
 
       while (true)

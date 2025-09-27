@@ -7,10 +7,10 @@ namespace FunnyBlox
     public TowerData TowerData;
     public ETowerOwnerType OwnerType;
     public int HitPoints;
+    public int Level;
     private TowerConnections _towerConnections;
     private UnitsFactory _unitsFactory;
-
-    [SerializeField] private Transform bodyTransform;
+    private TowerLevelVisualization _visualization;
 
     private bool _isSelected;
     private bool _isTriggered;
@@ -19,6 +19,9 @@ namespace FunnyBlox
     {
       _towerConnections = GetComponent<TowerConnections>();
       _unitsFactory = GetComponent<UnitsFactory>();
+      _visualization = GetComponent<TowerLevelVisualization>();
+      Level = LevelTower();
+      _visualization.UpdateVisual(Level);
       SetOwner(OwnerType);
     }
 
@@ -120,15 +123,7 @@ namespace FunnyBlox
     private void SetOwner(ETowerOwnerType ownerType)
     {
       OwnerType = ownerType;
-
-      Color bodyColor = OwnerType switch
-      {
-        ETowerOwnerType.Player => Color.blue,
-        ETowerOwnerType.Enemy => Color.red,
-        _ => Color.grey
-      };
-
-      bodyTransform.GetComponent<Renderer>().material.SetColor("_BaseColor", bodyColor);
+      _visualization.UpdateOwner(ownerType);
     }
 
     public int LevelTower()
@@ -147,14 +142,16 @@ namespace FunnyBlox
         }
       }
 
-      return level + 1;
+      return level;
     }
 
     private void UpdateLevelTower()
     {
-      if (HitPoints > 15)
-      {
-      }
+      int level = Level;
+      Level = LevelTower();
+
+      if (level != Level)
+        _visualization.UpdateVisual(Level);
     }
   }
 }
