@@ -33,6 +33,10 @@ namespace FunnyBlox
       Transform path = Instantiate(_pathTransform, _towerController.transform.position, Quaternion.identity);
       path.LookAt(towerTo.transform.position);
       path.localScale = new Vector3(1f, 1f, lenght);
+      if (path.TryGetComponent(out ConnectionPath connectionPath))
+      {
+        connectionPath.PlaceInTower(_towerController);
+      }
 
       _connections.Add(
         new()
@@ -44,9 +48,20 @@ namespace FunnyBlox
       UpdateEnabledConnections();
     }
 
-    public void OnDestroyConnection(TowerController towerTo)
+    public void OnDestroyConnection(Transform path)
     {
       IsConnected = false;
+
+      for (int i = 0; i < _connections.Count; i++)
+      {
+        if (_connections[i].ConnectionPath == path)
+        {
+          Destroy(_connections[i].ConnectionPath.gameObject);
+          _connections.RemoveAt(i);
+          break;
+        }
+      }
+
       UpdateEnabledConnections();
     }
   }
