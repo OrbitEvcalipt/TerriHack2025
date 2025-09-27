@@ -32,7 +32,6 @@ namespace FunnyBlox
 
     public void OnDeselectTower()
     {
-      _translateAlong.enabled = false;
       _isAiming = false;
       EventsHandler.AimingStop(_pointTransform.position);
       _pointTransform.position = new Vector3(1000f, 1000f, 1000f);
@@ -41,6 +40,7 @@ namespace FunnyBlox
 
     private IEnumerator OnDeselectTowerRoutine()
     {
+      _translateAlong.enabled = false;
       yield return null;
       _translateAlong.enabled = true;
       yield return null;

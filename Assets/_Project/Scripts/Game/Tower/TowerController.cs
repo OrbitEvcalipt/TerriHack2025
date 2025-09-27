@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace FunnyBlox
 {
@@ -19,25 +17,8 @@ namespace FunnyBlox
     private void Start()
     {
       _towerConnections = GetComponent<TowerConnections>();
-      _unitsFactory= GetComponent<UnitsFactory>();
-
-      Color bodyColor;
-      switch (OwnerType)
-      {
-        case ETowerOwnerType.Neutral:
-          bodyColor = Color.grey;
-          break;
-        case ETowerOwnerType.Player:
-          bodyColor = Color.blue;
-          break;
-        case ETowerOwnerType.Enemy:
-          bodyColor = Color.red;
-          break;
-        default:
-          throw new ArgumentOutOfRangeException();
-      }
-
-      bodyTransform.GetComponent<Renderer>().material.SetColor("_BaseColor", bodyColor);
+      _unitsFactory = GetComponent<UnitsFactory>();
+      SetOwner(OwnerType);
     }
 
     /// <summary>
@@ -73,7 +54,7 @@ namespace FunnyBlox
       _towerConnections.OnCreateConnection(towerTo);
       _unitsFactory.StartProduction();
     }
-    
+
     /// <summary>
     /// Что-то задело башню
     /// </summary>
@@ -88,8 +69,31 @@ namespace FunnyBlox
             _isTriggered = true;
             EventsHandler.SelectTower(this);
           }
+
           break;
         case "Unit":
+          if (other.TryGetComponent(out UnitController unit))
+          {
+            if (unit.TargetTower == this)
+            {
+              if (OwnerType != unit.OwnerType)
+              {
+                HitPoints -= unit.Attack;
+                if (HitPoints <= 0)
+                {
+                  HitPoints = Mathf.Abs(HitPoints);
+                  SetOwner(unit.OwnerType);
+                }
+              }
+              else
+              {
+                HitPoints += unit.HitPoints;
+                UpgradeTower();
+              }
+              unit.Despawn();
+            }
+          }
+
           break;
       }
     }
@@ -108,6 +112,27 @@ namespace FunnyBlox
 
           _isTriggered = false;
         }
+      }
+    }
+
+    private void SetOwner(ETowerOwnerType ownerType)
+    {
+      OwnerType = ownerType;
+
+      Color bodyColor = OwnerType switch
+      {
+        ETowerOwnerType.Player => Color.blue,
+        ETowerOwnerType.Enemy => Color.red,
+        _ => Color.grey
+      };
+
+      bodyTransform.GetComponent<Renderer>().material.SetColor("_BaseColor", bodyColor);
+    }
+
+    private void UpgradeTower()
+    {
+      if (HitPoints > 15)
+      {
       }
     }
   }

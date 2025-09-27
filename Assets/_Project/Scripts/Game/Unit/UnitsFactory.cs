@@ -21,11 +21,11 @@ namespace FunnyBlox
       _objectFactory = factory;
     }
 
-    public void SpawnUnit(EUnitType unitType, Vector3 position, Vector3 targetPosition)
+    public void SpawnUnit(EUnitType unitType, ETowerOwnerType ownerType, Vector3 position, TowerController target)
     {
       UnitController unit = _objectFactory.CreateObject<UnitController>(_prefabPaths[(int)unitType]);
 
-      unit.Spawn(position, targetPosition);
+      unit.Spawn(ownerType, position, target);
     }
 
     private void Start()
@@ -58,7 +58,8 @@ namespace FunnyBlox
       {
         foreach (var connection in _towerConnections.Connections)
         {
-          SpawnUnit(TowerData.UnitType, transform.position, connection.Tower.transform.position);
+          SpawnUnit(TowerData.UnitType, _towerController.OwnerType, transform.position,
+            connection.Tower);
         }
 
         yield return wait;

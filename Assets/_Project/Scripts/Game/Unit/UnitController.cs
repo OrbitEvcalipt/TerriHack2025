@@ -6,18 +6,28 @@ namespace FunnyBlox
 {
   public class UnitController : MonoBehaviour
   {
-    [SerializeField] private UnitData _unitData;
+    public ETowerOwnerType OwnerType;
+    public int HitPoints;
 
     public EUnitType GetUnitType() => _unitData.UnitType;
+    public int Attack => _unitData.Attack;
 
-    public void Spawn(Vector3 position, Vector3 targetPosition)
+    [SerializeField] private UnitData _unitData;
+    public TowerController TargetTower => _targetTower;
+    private TowerController _targetTower;
+
+    public void Spawn(ETowerOwnerType ownerType, Vector3 position, TowerController target)
     {
+      OwnerType = ownerType;
+      HitPoints = _unitData.HitPoints;
       transform.position = position;
-      MoveToTarget(targetPosition);
+      _targetTower = target;
+      MoveToTarget(target.transform.position);
     }
 
     public void Despawn()
     {
+      _targetTower = null;
       transform.DOKill();
       PoolCollection.Unspawn(transform);
     }
