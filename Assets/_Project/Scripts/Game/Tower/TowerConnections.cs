@@ -18,6 +18,8 @@ namespace FunnyBlox
     public void UpdateEnabledConnections() =>
       _selectableByFinger.enabled = !(_connections.Count >= _towerController.Level + 1);
 
+    public bool IsEnableConnections => _selectableByFinger.enabled;
+
     private void Start()
     {
       _towerController = GetComponent<TowerController>();
@@ -44,7 +46,7 @@ namespace FunnyBlox
         });
 
       UpdateEnabledConnections();
-      
+
       towerTo.OnDestroyConnection(_towerController);
     }
 

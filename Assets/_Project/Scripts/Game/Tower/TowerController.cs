@@ -53,6 +53,8 @@ namespace FunnyBlox
       }
     }
 
+    public bool IsEnableConnections => _towerConnections.IsEnableConnections;
+    
     /// <summary>
     /// Создаём соединение с башней
     /// </summary>
