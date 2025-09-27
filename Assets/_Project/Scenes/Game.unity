@@ -2061,7 +2061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2246608600519170150, guid: b3c60f57822e1284ca00e0822bc97762, type: 3}
       propertyPath: HitPoints
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2246608600519170150, guid: b3c60f57822e1284ca00e0822bc97762, type: 3}
       propertyPath: OwnerType
