@@ -6,5 +6,6 @@ namespace FunnyBlox
   public class Settings : ScriptableObject
   {
     public string[] UnitPrefabPaths;
+    public static bool SoundIsActive { get; set; } = true;
   }
 }

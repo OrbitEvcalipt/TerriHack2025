@@ -1,3 +1,4 @@
+using FunnyBlox.Utils;
 using UnityEngine;
 
 namespace FunnyBlox
@@ -86,6 +87,7 @@ namespace FunnyBlox
             _isTriggered = true;
             EventsHandler.SelectTower(this);
             _selectionParticles.gameObject.SetActive(true);
+            AudioManager.PlayOneShotSFX(AudioDatabaseEnum.Game_SelectionSFX);
           }
 
           break;
@@ -141,7 +143,10 @@ namespace FunnyBlox
       _visualization.UpdateOwner(ownerType, () =>
       {
         if (ownerType == ETowerOwnerType.Player && !start)
+        {
           _upgradeParticles.Play();
+          AudioManager.PlayOneShotSFX(AudioDatabaseEnum.Game_UpgradeSFX);
+        }
       });
     }
 
