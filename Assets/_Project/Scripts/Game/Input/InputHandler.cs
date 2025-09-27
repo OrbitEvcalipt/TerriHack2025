@@ -1,4 +1,5 @@
-﻿using Lean.Touch;
+﻿using System.Collections;
+using Lean.Touch;
 using UnityEngine;
 
 namespace FunnyBlox
@@ -35,6 +36,15 @@ namespace FunnyBlox
       _isAiming = false;
       EventsHandler.AimingStop(_pointTransform.position);
       _pointTransform.position = new Vector3(1000f, 1000f, 1000f);
+      StartCoroutine(OnDeselectTowerRoutine());
+    }
+
+    private IEnumerator OnDeselectTowerRoutine()
+    {
+      yield return null;
+      _translateAlong.enabled = true;
+      yield return null;
+      _translateAlong.enabled = false;
     }
   }
 }

@@ -80,13 +80,17 @@ namespace FunnyBlox
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
-      if (other.CompareTag("Point"))
+      switch (other.tag)
       {
-        if (OwnerType != ETowerOwnerType.Player && !_isSelected)
-        {
-          _isTriggered = true;
-          EventsHandler.SelectTower(this);
-        }
+        case "Point":
+          if (OwnerType != ETowerOwnerType.Player && !_isSelected)
+          {
+            _isTriggered = true;
+            EventsHandler.SelectTower(this);
+          }
+          break;
+        case "Unit":
+          break;
       }
     }
 
