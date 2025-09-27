@@ -176,7 +176,11 @@ namespace FunnyBlox
 
       if (level != Level)
       {
-        _visualization.UpdateVisual(Level, () => { _upgradeParticles.Play();});
+        _visualization.UpdateVisual(Level, () =>
+        {
+          _upgradeParticles.Play();
+          AudioManager.PlayOneShotSFX(AudioDatabaseEnum.Game_UpgradeSFX);
+        });
         _towerConnections.UpdateEnabledConnections();
       }
     }
