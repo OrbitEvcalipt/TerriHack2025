@@ -11,6 +11,8 @@ namespace FunnyBlox
     private TowerConnections _towerConnections;
     private UnitsFactory _unitsFactory;
     private TowerLevelVisualization _visualization;
+    [SerializeField] private ParticleSystem _selectionParticles;
+    [SerializeField] private ParticleSystem _upgradeParticles;
 
     private bool _isSelected;
     private bool _isTriggered;
@@ -23,6 +25,7 @@ namespace FunnyBlox
       Level = LevelTower();
       _visualization.UpdateVisual(Level);
       SetOwner(OwnerType);
+      _selectionParticles.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -72,6 +75,7 @@ namespace FunnyBlox
           {
             _isTriggered = true;
             EventsHandler.SelectTower(this);
+            _selectionParticles.gameObject.SetActive(true);
           }
 
           break;
@@ -114,6 +118,7 @@ namespace FunnyBlox
         if (!_isSelected && _isTriggered)
         {
           EventsHandler.DeselectTower(this);
+          _selectionParticles.gameObject.SetActive(false);
 
           _isTriggered = false;
         }
@@ -154,6 +159,7 @@ namespace FunnyBlox
       {
         _visualization.UpdateVisual(Level);
         _towerConnections.UpdateEnabledConnections();
+        _upgradeParticles.Play();
       }
     }
   }
