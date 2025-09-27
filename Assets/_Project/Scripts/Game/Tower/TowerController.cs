@@ -64,7 +64,7 @@ namespace FunnyBlox
       switch (other.tag)
       {
         case "Point":
-          if (OwnerType != ETowerOwnerType.Player && !_isSelected)
+          if (!_isSelected)
           {
             _isTriggered = true;
             EventsHandler.SelectTower(this);
@@ -106,7 +106,7 @@ namespace FunnyBlox
     {
       if (other.CompareTag("Point"))
       {
-        if (OwnerType != ETowerOwnerType.Player && _isTriggered)
+        if (!_isSelected && _isTriggered)
         {
           EventsHandler.DeselectTower(this);
 

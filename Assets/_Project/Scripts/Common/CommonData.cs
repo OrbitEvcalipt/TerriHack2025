@@ -9,16 +9,16 @@
 
   public enum ETowerPurposeType
   {
-    SoldierFactory = 0,
-    TankFactory = 1,
+    FactoryUnit_00 = 0,
+    FactoryUnit_01 = 1,
     WatchTower = 2,
   }
 
   public enum EUnitType
   {
-    Soldier = 0,
-    Tank = 1,
-    WatchTower = 99,
+    UnitType_00 = 0,
+    UnitType_01 = 1,
+    UnitType_99 = 99,
   }
 
   public class CommonData
