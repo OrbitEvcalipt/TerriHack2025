@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 5699748012826540237}
   - component: {fileID: 2246608600519170150}
   - component: {fileID: 9108360466768639238}
-  - component: {fileID: -8087683699948857356}
+  - component: {fileID: 3309157041748607933}
   - component: {fileID: 5545212481143180930}
   - component: {fileID: 2575285399301874422}
   m_Layer: 0
-  m_Name: TowerTank
+  m_Name: Tower_99
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 725185667754b54478a1fe40443cad23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TowerData: {fileID: 11400000, guid: 3aa6e0a9c2f97974483d0df3e637b5d5, type: 2}
   OwnerType: 0
   HitPoints: 10
   bodyTransform: {fileID: 4766639060398664626}
@@ -66,7 +67,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pathTransform: {fileID: 6897795401820546316, guid: 417d42a1362a6c14d9e7fd7ec16e1741, type: 3}
   _connections: []
---- !u!114 &-8087683699948857356
+--- !u!114 &3309157041748607933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78,10 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ed3fb980de4b3bb43d9db92b76858d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TowerData: {fileID: 11400000, guid: 4c49b50025ef2c7409a4f800ab4194f5, type: 2}
-  _prefabPaths:
-  - Units/UnitSoldier
-  - Units/UnitTank
+  _settings: {fileID: 11400000, guid: 293861b953dd0a348a59d4509ad41b77, type: 2}
 --- !u!114 &5545212481143180930
 MonoBehaviour:
   m_ObjectHideFlags: 0

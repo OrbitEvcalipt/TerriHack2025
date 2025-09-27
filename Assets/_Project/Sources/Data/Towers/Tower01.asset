@@ -13,4 +13,10 @@ MonoBehaviour:
   m_Name: Tower01
   m_EditorClassIdentifier: 
   UnitType: 1
-  FactorySpeed: 1
+  ProgressionData:
+  - HitPoints: 15
+    FactorySpeed: 0.3
+  - HitPoints: 20
+    FactorySpeed: 0.4
+  - HitPoints: 25
+    FactorySpeed: 0.5

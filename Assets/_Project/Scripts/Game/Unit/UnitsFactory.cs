@@ -7,8 +7,7 @@ namespace FunnyBlox
 {
   public class UnitsFactory : MonoBehaviour
   {
-    public TowerData TowerData;
-    [SerializeField] private string[] _prefabPaths;
+    [SerializeField] private Settings _settings;
     private TowerController _towerController;
     private TowerConnections _towerConnections;
     private Coroutine _productionCoroutine;
@@ -23,7 +22,7 @@ namespace FunnyBlox
 
     public void SpawnUnit(EUnitType unitType, ETowerOwnerType ownerType, Vector3 position, TowerController target)
     {
-      UnitController unit = _objectFactory.CreateObject<UnitController>(_prefabPaths[(int)unitType]);
+      UnitController unit = _objectFactory.CreateObject<UnitController>(_settings.UnitPrefabPaths[(int)unitType]);
 
       unit.Spawn(ownerType, position, target);
     }
@@ -52,13 +51,15 @@ namespace FunnyBlox
 
     private IEnumerator ProductionRoutine()
     {
-      WaitForSeconds wait = new WaitForSeconds(1f / TowerData.FactorySpeed);
+      WaitForSeconds wait =
+        new WaitForSeconds(1f / _towerController.TowerData.ProgressionData[_towerController.LevelTower()]
+          .FactorySpeed);
 
       while (true)
       {
         foreach (var connection in _towerConnections.Connections)
         {
-          SpawnUnit(TowerData.UnitType, _towerController.OwnerType, transform.position,
+          SpawnUnit(_towerController.TowerData.UnitType, _towerController.OwnerType, transform.position,
             connection.Tower);
         }
 

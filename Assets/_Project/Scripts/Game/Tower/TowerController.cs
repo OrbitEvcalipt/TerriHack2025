@@ -4,6 +4,7 @@ namespace FunnyBlox
 {
   public class TowerController : MonoBehaviour
   {
+    public TowerData TowerData;
     public ETowerOwnerType OwnerType;
     public int HitPoints;
     private TowerConnections _towerConnections;
@@ -88,8 +89,9 @@ namespace FunnyBlox
               else
               {
                 HitPoints += unit.HitPoints;
-                UpgradeTower();
               }
+
+              UpdateLevelTower();
               unit.Despawn();
             }
           }
@@ -129,7 +131,26 @@ namespace FunnyBlox
       bodyTransform.GetComponent<Renderer>().material.SetColor("_BaseColor", bodyColor);
     }
 
-    private void UpgradeTower()
+    public int LevelTower()
+    {
+      int level = 0;
+
+      for (int i = 0; i < TowerData.ProgressionData.Length; i++)
+      {
+        if (HitPoints >= TowerData.ProgressionData[i].HitPoints)
+        {
+          level = i;
+        }
+        else
+        {
+          break;
+        }
+      }
+
+      return level + 1;
+    }
+
+    private void UpdateLevelTower()
     {
       if (HitPoints > 15)
       {
