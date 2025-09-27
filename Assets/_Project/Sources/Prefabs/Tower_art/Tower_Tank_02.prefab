@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1827058021457824876}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.337, y: 0, z: 0}
+  m_LocalPosition: {x: -0.002, y: 0, z: 0}
   m_LocalScale: {x: 0.16590586, y: 0.16590586, z: 0.16590586}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -299,7 +299,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3750153718408087614, guid: fcfdce51a99c0c847a713155f6c4b5ad, type: 3}
       propertyPath: m_Name
-      value: Tower_Tank_02 Variant
+      value: Tower_Tank_02
       objectReference: {fileID: 0}
     - target: {fileID: 6473300255161595402, guid: fcfdce51a99c0c847a713155f6c4b5ad, type: 3}
       propertyPath: m_LocalPosition.x
