@@ -9,6 +9,7 @@ TagManager:
   - asteroid
   - Unit
   - Tower
+  - Obstacle
   layers:
   - Default
   - TransparentFX

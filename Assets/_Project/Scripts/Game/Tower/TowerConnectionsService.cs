@@ -4,7 +4,7 @@ namespace FunnyBlox
 {
   public class TowerConnectionsService : MonoBehaviour
   {
-    
+    [SerializeField] private AimingLine _aimingLine;
 
     private TowerController _towerFrom;
     private TowerController _towerTo;
@@ -30,7 +30,6 @@ namespace FunnyBlox
       _towerFrom = tower;
     }
 
-    
 
     public void OnSelectTower(TowerController tower)
     {
@@ -44,7 +43,7 @@ namespace FunnyBlox
 
     private void OnAimingStop(Vector3 position)
     {
-      if (_towerFrom && _towerTo)
+      if (_towerFrom && _towerTo && _aimingLine.AmountTouched == 2)
       {
         _towerFrom.OnCreateConnection(_towerTo);
       }
