@@ -15,10 +15,10 @@ MonoBehaviour:
   UnitType: 0
   ProgressionData:
   - HitPoints: 0
-    FactorySpeed: 0.8
-  - HitPoints: 15
     FactorySpeed: 1
-  - HitPoints: 25
+  - HitPoints: 10
     FactorySpeed: 1.25
-  - HitPoints: 35
+  - HitPoints: 15
     FactorySpeed: 1.5
+  - HitPoints: 20
+    FactorySpeed: 1.7
