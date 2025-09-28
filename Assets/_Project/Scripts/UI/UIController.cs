@@ -14,12 +14,15 @@ namespace FunnyBlox.UI
       [SerializeField] private GUICanvasGroup _winScreen;
       [SerializeField] private GUICanvasGroup _loseScreen;
       [SerializeField] private GUICanvasGroup _startScreen;
+      [SerializeField] private GUICanvasGroup _tutorialScreen;
 
       public GUICanvasGroup WinScreen => _winScreen;
       public GUICanvasGroup LoseScreen  => _loseScreen;
       public GUICanvasGroup InGameScreen => _infoRootScreen;
       public GUICanvasGroup StartScreen => _startScreen;
-      
+
+      public GUICanvasGroup TutorialScreen => _tutorialScreen;
+
 
       public void SetupBuildings(List<TowerController> buildings)
       {
@@ -45,6 +48,9 @@ namespace FunnyBlox.UI
          InGameScreen.Show();
          StartScreen.Hide();
          EventsHandler.GameStart();
+         ShowTutorialScreen();
       }
+
+      private void ShowTutorialScreen() => TutorialScreen.Show(() => TutorialScreen.Hide());
    }
 }
