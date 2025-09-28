@@ -152,6 +152,7 @@ namespace FunnyBlox
     private void SetOwner(ETowerOwnerType ownerType, bool start = false)
     {
       OwnerType = ownerType;
+      EventsHandler.ChangeTowerOwner();
       _visualization.UpdateOwner(ownerType, () =>
       {
         if (ownerType == ETowerOwnerType.Player && !start)
