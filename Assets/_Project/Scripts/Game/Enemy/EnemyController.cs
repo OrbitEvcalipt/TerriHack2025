@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace FunnyBlox
@@ -11,6 +12,7 @@ namespace FunnyBlox
     [SerializeField] private Transform level;
 
     [SerializeField] private TowerController[] _towers;
+    [SerializeField] private float _delayOnStart = 3f;
 
     private void OnEnable()
     {
@@ -36,6 +38,7 @@ namespace FunnyBlox
 
     private IEnumerator AttackDurationRoutine()
     {
+      yield return new WaitForSeconds(_delayOnStart);
       while (true)
       {
         yield return new WaitForSeconds(Random.Range(1f, 2f));
