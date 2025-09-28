@@ -79,5 +79,14 @@ namespace FunnyBlox
 
       UpdateEnabledConnections();
     }
+
+    public void DestroyAllConnections()
+    {
+      foreach (var connection in _connections)
+      {
+        Destroy(connection.ConnectionPath.gameObject);
+      }
+      _connections.Clear();
+    }
   }
 }

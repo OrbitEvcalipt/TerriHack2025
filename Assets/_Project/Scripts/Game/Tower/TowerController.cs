@@ -149,6 +149,8 @@ namespace FunnyBlox
           AudioManager.PlayOneShotSFX(AudioDatabaseEnum.Game_UpgradeSFX);
         }
       });
+
+      TowerConnections.DestroyAllConnections();
     }
 
     public int LevelTower()

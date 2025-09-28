@@ -5,11 +5,25 @@ namespace FunnyBlox
 {
   public class EventsHandler
   {
-    public static event Action OnGameStateChanged;
+    public static event Action OnChangeTowerOwner;
 
-    public static void GameStateChanged()
+    public static void ChangeTowerOwner()
     {
-      OnGameStateChanged?.Invoke();
+      OnChangeTowerOwner?.Invoke();
+    }
+    
+    public static event Action OnGameWin;
+
+    public static void GameWin()
+    {
+      OnGameWin?.Invoke();
+    }
+    
+    public static event Action OnGameLose;
+
+    public static void GameLose()
+    {
+      OnGameLose?.Invoke();
     }
 
     public static event Action<TowerController> OnAimingStart;
