@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using FunnyBlox.UI;
 using UnityEngine;
 
 namespace FunnyBlox
@@ -29,6 +30,9 @@ namespace FunnyBlox
     public void Start()
     {
       _towers = GetComponentsInChildren<TowerController>();
+      UIController.Instance.SetupBuildings(_towers.ToList());
+      foreach (var tower in _towers)
+        tower.Setup();
     }
   }
 }
