@@ -15,13 +15,13 @@ namespace FunnyBlox
     private void OnEnable()
     {
       EventsHandler.OnLevelLoadComplete += OnLevelLoadComplete;
-      EventsHandler.OnStartGame += OnStartGame;
+      EventsHandler.OnGameStart += OnStartGame;
     }
 
     private void OnDisable()
     {
       EventsHandler.OnLevelLoadComplete -= OnLevelLoadComplete;
-      EventsHandler.OnStartGame -= OnStartGame;
+      EventsHandler.OnGameStart -= OnStartGame;
     }
 
     private void OnLevelLoadComplete(TowerController[] towers)

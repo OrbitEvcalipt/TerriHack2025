@@ -6,11 +6,11 @@ namespace FunnyBlox
   public class EventsHandler
   {
     
-    public static event Action OnStartGame;
+    public static event Action OnGameStart;
 
-    public static void StartGame()
+    public static void GameStart()
     {
-      OnStartGame?.Invoke();
+      OnGameStart?.Invoke();
     }
     
     public static event Action OnChangeTowerOwner;
