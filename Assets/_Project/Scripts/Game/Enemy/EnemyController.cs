@@ -53,6 +53,7 @@ namespace FunnyBlox
       if (enemies.Count == 0)
       {
         Debug.Log("No enemies found");
+        return;
       }
 
       var towerFrom = enemies[Random.Range(0, enemies.Count)];
