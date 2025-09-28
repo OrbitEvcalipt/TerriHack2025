@@ -59,5 +59,6 @@ namespace FunnyBlox
         }
 
         public void UpdateHitPoints(int hitPoints) => _buildingInfo.SetHp(hitPoints);
+        public void UpdateConnections(int connections) => _buildingInfo.EnableConnection(connections);
     }
 }
