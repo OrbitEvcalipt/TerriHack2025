@@ -20,7 +20,6 @@ namespace FunnyBlox
             for (var i = 0; i <= level; i++)
             {
                 var shouldBeActive = i <= level;
-                Debug.LogError(shouldBeActive);
                 connections[i].SetActive(shouldBeActive);
             }
         }

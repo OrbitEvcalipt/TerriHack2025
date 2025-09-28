@@ -12,7 +12,7 @@ namespace FunnyBlox
     public int HitPoints;
     public int Level;
     public TowerLevelVisualization Visualization => _visualization;
-    
+
     [HideInInspector] public TowerConnections TowerConnections;
     private UnitsFactory _unitsFactory;
     private TowerLevelVisualization _visualization;
@@ -60,7 +60,7 @@ namespace FunnyBlox
         InputHandler.Instance.OnDeselectTower();
       }
     }
-    
+
     /// <summary>
     /// Создаём соединение с башней
     /// </summary>
@@ -121,6 +121,7 @@ namespace FunnyBlox
               UpdateLevelTower();
               unit.Despawn();
             }
+
             _visualization.UpdateHitPoints(HitPoints);
           }
 
@@ -185,7 +186,7 @@ namespace FunnyBlox
       int level = Level;
       Level = LevelTower();
 
-      if (level != Level)
+      if (level != Level && Level < 3)
       {
         _visualization.UpdateVisual(Level, () =>
         {
