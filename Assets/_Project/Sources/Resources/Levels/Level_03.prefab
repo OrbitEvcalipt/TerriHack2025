@@ -338,7 +338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2246608600519170150, guid: 5f098f0b7bf0de3479d644a15aac75fb, type: 3}
       propertyPath: HitPoints
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2246608600519170150, guid: 5f098f0b7bf0de3479d644a15aac75fb, type: 3}
       propertyPath: OwnerType
@@ -412,7 +412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2246608600519170150, guid: b3c60f57822e1284ca00e0822bc97762, type: 3}
       propertyPath: HitPoints
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2246608600519170150, guid: b3c60f57822e1284ca00e0822bc97762, type: 3}
       propertyPath: OwnerType
