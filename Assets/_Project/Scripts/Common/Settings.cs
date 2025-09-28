@@ -10,5 +10,6 @@ namespace FunnyBlox
 
     public Color[] ConnectionPathColor;
     public Color[] AimingLineColor;
+    public float DelayEnemyAttackOnStart = 3f;
   }
 }

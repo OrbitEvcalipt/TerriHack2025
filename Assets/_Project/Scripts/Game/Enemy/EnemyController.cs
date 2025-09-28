@@ -9,10 +9,9 @@ namespace FunnyBlox
 {
   public class EnemyController : MonoBehaviour
   {
-    [SerializeField] private Transform level;
+    [SerializeField] private Settings _settings;
 
     [SerializeField] private TowerController[] _towers;
-    [SerializeField] private float _delayOnStart = 3f;
 
     private void OnEnable()
     {
@@ -38,7 +37,7 @@ namespace FunnyBlox
 
     private IEnumerator AttackDurationRoutine()
     {
-      yield return new WaitForSeconds(_delayOnStart);
+      yield return new WaitForSeconds(_settings.DelayEnemyAttackOnStart);
       while (true)
       {
         yield return new WaitForSeconds(Random.Range(1f, 2f));
