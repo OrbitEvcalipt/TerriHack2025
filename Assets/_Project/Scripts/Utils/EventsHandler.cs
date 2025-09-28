@@ -5,6 +5,14 @@ namespace FunnyBlox
 {
   public class EventsHandler
   {
+    
+    public static event Action OnStartGame;
+
+    public static void StartGame()
+    {
+      OnStartGame?.Invoke();
+    }
+    
     public static event Action OnChangeTowerOwner;
 
     public static void ChangeTowerOwner()
@@ -24,6 +32,13 @@ namespace FunnyBlox
     public static void GameLose()
     {
       OnGameLose?.Invoke();
+    }
+    
+    public static event Action<TowerController[]> OnLevelLoadComplete;
+
+    public static void LevelLoadComplete(TowerController[] towers)
+    {
+      OnLevelLoadComplete?.Invoke(towers);
     }
 
     public static event Action<TowerController> OnAimingStart;

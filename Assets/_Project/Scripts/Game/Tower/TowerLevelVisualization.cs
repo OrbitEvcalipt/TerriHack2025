@@ -6,12 +6,12 @@ namespace FunnyBlox
   public class TowerLevelVisualization : MonoBehaviour
   {
     [SerializeField] private GameObject[] _vizualForLevel;
-    [SerializeField] private AnchorToTransform _anchorToTransform;
+    [SerializeField] private BuildingInfo _buildingInfo;
     [SerializeField] private Vector2[] _pixelOffsets;
 
     [SerializeField] private Renderer[] renderer;
 
-    public void Setup(AnchorToTransform anchorToTransform) => _anchorToTransform = anchorToTransform;
+    public void Setup(BuildingInfo buildingInfo) => _buildingInfo = buildingInfo;
 
     public void UpdateOwner(ETowerOwnerType ownerType, TweenCallback onComplete)
     {
@@ -45,9 +45,13 @@ namespace FunnyBlox
         {
           _vizualForLevel[index].SetActive(index == level);
           _vizualForLevel[index].transform.DOScale(Vector3.one, 0.15f).SetEase(Ease.OutBack).OnComplete(onComplete);
-          //_anchorToTransform.SetPixelOffset(_pixelOffsets[index]);
+          if (index == level)
+            _buildingInfo.AnchorToTransform.SetPixelOffset(_pixelOffsets[index]);
         });
+        _buildingInfo.EnableConnection(level);
       }
     }
+    
+    public void UpdateHitPoints(int hitPoints) => _buildingInfo.SetHp(hitPoints);
   }
 }

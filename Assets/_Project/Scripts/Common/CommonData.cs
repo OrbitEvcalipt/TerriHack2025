@@ -23,5 +23,6 @@
 
   public class CommonData
   {
+    public const string PLAYERPREFS_CURRENTLEVEL="CurrentLevel";
   }
 }

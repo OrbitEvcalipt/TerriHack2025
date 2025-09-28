@@ -59,6 +59,8 @@ MonoBehaviour:
   OwnerType: 0
   HitPoints: 10
   Level: 0
+  TowerConnections: {fileID: 0}
+  Visualization: {fileID: 8068157792260408441}
   _selectionParticles: {fileID: 8850841393781257778}
   _upgradeParticles: {fileID: 6117389943398391934}
 --- !u!114 &9108360466768639238
@@ -104,7 +106,7 @@ MonoBehaviour:
   - {fileID: 6264862840899617998}
   - {fileID: 5283988966932776295}
   - {fileID: 2852816627571384075}
-  _anchorToTransform: []
+  _anchorToTransform: {fileID: 0}
   _pixelOffsets:
   - {x: 0, y: 30}
   - {x: 0, y: 55}

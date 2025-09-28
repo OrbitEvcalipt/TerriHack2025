@@ -1,6 +1,6 @@
 ﻿using System.Linq;
+using FunnyBlox.UI;
 using UnityEngine;
-using Zenject;
 
 namespace FunnyBlox
 {
@@ -32,6 +32,10 @@ namespace FunnyBlox
       _towers = GetComponentsInChildren<TowerController>();
 
       EventsHandler.LevelLoadComplete(_towers);
+
+      UIController.Instance.SetupBuildings(_towers.ToList());
+      foreach (var tower in _towers)
+        tower.Setup();
     }
   }
 }

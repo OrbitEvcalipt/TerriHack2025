@@ -57,6 +57,8 @@ namespace FunnyBlox
         }
 
         public void SetOffset(Vector2 pixelOffset) => _pixelOffset = pixelOffset;
+        
+        public void SetTarget(Transform target) => _transform = target;
     }
 
     [ExecuteInEditMode]
@@ -102,5 +104,6 @@ namespace FunnyBlox
         }
 
         public void SetPixelOffset(Vector2 pixelOffset) => _anchor.SetOffset(pixelOffset);
+        public void SetTarget(Transform target) => _anchor.SetTarget(target);
     }
 }

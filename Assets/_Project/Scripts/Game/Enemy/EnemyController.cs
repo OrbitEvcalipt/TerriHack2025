@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace FunnyBlox
 {
@@ -10,10 +12,25 @@ namespace FunnyBlox
 
     [SerializeField] private TowerController[] _towers;
 
-    public void Start()
+    private void OnEnable()
     {
-      _towers = level.GetComponentsInChildren<TowerController>();
+      EventsHandler.OnLevelLoadComplete += OnLevelLoadComplete;
+      EventsHandler.OnStartGame += OnStartGame;
+    }
 
+    private void OnDisable()
+    {
+      EventsHandler.OnLevelLoadComplete -= OnLevelLoadComplete;
+      EventsHandler.OnStartGame -= OnStartGame;
+    }
+
+    private void OnLevelLoadComplete(TowerController[] towers)
+    {
+      _towers = towers;
+    }
+
+    public void OnStartGame()
+    {
       StartCoroutine(AttackDurationRoutine());
     }
 
@@ -45,9 +62,12 @@ namespace FunnyBlox
           .Where(t => t != null //не пустая
                       && t != towerFrom // не башня из которой запускаем соединение
                       && t.OwnerType != ETowerOwnerType.Enemy // башня не принадлежит врагу
-                      && !towerFrom.TowerConnections.Connections.Any(c => c.Tower == t) //башня ещё не присоединена к вражеской 
-                      )
-          .OrderBy(t => Vector3.Distance(towerFrom.transform.position, t.transform.position)) // отсортировали по удалённости от фражеской
+                      && !towerFrom.TowerConnections.Connections.Any(c =>
+                        c.Tower == t) //башня ещё не присоединена к вражеской 
+          )
+          .OrderBy(t =>
+            Vector3.Distance(towerFrom.transform.position,
+              t.transform.position)) // отсортировали по удалённости от фражеской
           .FirstOrDefault();
 
         if (towerTo != null)

@@ -1,3 +1,4 @@
+using System;
 using FunnyBlox.Utils;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -10,6 +11,8 @@ namespace FunnyBlox
     public ETowerOwnerType OwnerType;
     public int HitPoints;
     public int Level;
+    public TowerLevelVisualization Visualization => _visualization;
+    
     [HideInInspector] public TowerConnections TowerConnections;
     private UnitsFactory _unitsFactory;
     private TowerLevelVisualization _visualization;
@@ -19,11 +22,15 @@ namespace FunnyBlox
     private bool _isSelected;
     private bool _isTriggered;
 
-    private void Start()
+    private void Awake()
     {
       TowerConnections = GetComponent<TowerConnections>();
       _unitsFactory = GetComponent<UnitsFactory>();
       _visualization = GetComponent<TowerLevelVisualization>();
+    }
+
+    public void Setup()
+    {
       Level = LevelTower();
       _visualization.UpdateVisual(Level, null);
       SetOwner(OwnerType, start: true);
@@ -114,6 +121,7 @@ namespace FunnyBlox
               UpdateLevelTower();
               unit.Despawn();
             }
+            _visualization.UpdateHitPoints(HitPoints);
           }
 
           break;
