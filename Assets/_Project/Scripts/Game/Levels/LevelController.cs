@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using UnityEngine;
+using Zenject;
 
 namespace FunnyBlox
 {
@@ -7,7 +8,7 @@ namespace FunnyBlox
   {
     public TowerController[] Towers => _towers;
     [SerializeField] private TowerController[] _towers;
-
+    
     private void OnEnable()
     {
       EventsHandler.OnChangeTowerOwner += OnChangeTowerOwner;
@@ -29,6 +30,8 @@ namespace FunnyBlox
     public void Start()
     {
       _towers = GetComponentsInChildren<TowerController>();
+
+      EventsHandler.LevelLoadComplete(_towers);
     }
   }
 }
