@@ -10,11 +10,14 @@ namespace FunnyBlox.UI
       [SerializeField] private List<BuildingInfo> _buildingInfos;
       [SerializeField] private GameObject _buildingInfoPrefab;
       [SerializeField] private GameObject _buildingInfoRoot;
+      [SerializeField] private GUICanvasGroup _infoRootScreen;
       [SerializeField] private GUICanvasGroup _winScreen;
       [SerializeField] private GUICanvasGroup _loseScreen;
 
       public GUICanvasGroup WinScreen => _winScreen;
       public GUICanvasGroup LoseScreen  => _loseScreen;
+      
+      public GUICanvasGroup InGameScreen => _infoRootScreen;
       
 
       public void SetupBuildings(List<TowerController> buildings)
