@@ -35,6 +35,8 @@ namespace FunnyBlox
       _visualization.UpdateVisual(Level, null);
       SetOwner(OwnerType, start: true);
       _selectionParticles.gameObject.SetActive(false);
+      if (TowerData.UnitType == EUnitType.UnitType_99)
+        _visualization.DisableConnectionsPermanent();
     }
 
     /// <summary>

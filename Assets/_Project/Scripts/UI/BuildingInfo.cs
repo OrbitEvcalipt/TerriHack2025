@@ -30,5 +30,7 @@ namespace FunnyBlox
             foreach (var connection in connections) 
                 connection.SetActive(false);
         }
+        
+        public void DisableAllConnectionsPermanent() => connections[0].transform.parent.gameObject.SetActive(false);
     }
 }

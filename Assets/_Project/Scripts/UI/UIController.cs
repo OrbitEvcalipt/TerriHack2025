@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using FunnyBlox.GUI;
 using UnityEngine;
 
 namespace FunnyBlox.UI
@@ -9,6 +10,12 @@ namespace FunnyBlox.UI
       [SerializeField] private List<BuildingInfo> _buildingInfos;
       [SerializeField] private GameObject _buildingInfoPrefab;
       [SerializeField] private GameObject _buildingInfoRoot;
+      [SerializeField] private GUICanvasGroup _winScreen;
+      [SerializeField] private GUICanvasGroup _loseScreen;
+
+      public GUICanvasGroup WinScreen => _winScreen;
+      public GUICanvasGroup LoseScreen  => _loseScreen;
+      
 
       public void SetupBuildings(List<TowerController> buildings)
       {
