@@ -36,6 +36,8 @@ namespace FunnyBlox
       UIController.Instance.SetupBuildings(_towers.ToList());
       foreach (var tower in _towers)
         tower.Setup();
+      
+      UIController.Instance.ShowStartScreen();
     }
   }
 }

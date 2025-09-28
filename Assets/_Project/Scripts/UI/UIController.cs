@@ -13,11 +13,12 @@ namespace FunnyBlox.UI
       [SerializeField] private GUICanvasGroup _infoRootScreen;
       [SerializeField] private GUICanvasGroup _winScreen;
       [SerializeField] private GUICanvasGroup _loseScreen;
+      [SerializeField] private GUICanvasGroup _startScreen;
 
       public GUICanvasGroup WinScreen => _winScreen;
       public GUICanvasGroup LoseScreen  => _loseScreen;
-      
       public GUICanvasGroup InGameScreen => _infoRootScreen;
+      public GUICanvasGroup StartScreen => _startScreen;
       
 
       public void SetupBuildings(List<TowerController> buildings)
@@ -29,6 +30,21 @@ namespace FunnyBlox.UI
             buildingInfo.SetTarget(building.transform);
             _buildingInfos.Add(buildingInfo);
          }
+      }
+
+      public void ShowStartScreen()
+      {
+         InGameScreen.Hide();
+         WinScreen.Hide();
+         LoseScreen.Hide();
+         StartScreen.Show();
+      }
+
+      public void HideStartScreen()
+      {
+         InGameScreen.Show();
+         StartScreen.Hide();
+         EventsHandler.GameStart();
       }
    }
 }

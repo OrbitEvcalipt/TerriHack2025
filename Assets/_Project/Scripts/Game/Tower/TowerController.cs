@@ -1,3 +1,4 @@
+using DG.Tweening;
 using FunnyBlox.Utils;
 using UnityEngine;
 
@@ -120,6 +121,10 @@ namespace FunnyBlox
 
               UpdateLevelTower();
               unit.Despawn();
+              transform.transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.15f).SetEase(Ease.InQuint).OnComplete(() =>
+              {
+                transform.transform.DORewind();
+              });
             }
 
             _visualization.UpdateHitPoints(HitPoints);
