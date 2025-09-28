@@ -56,8 +56,12 @@ namespace FunnyBlox
             return false;
         }
 
-        public void SetOffset(Vector2 pixelOffset) => _pixelOffset = pixelOffset;
-        
+        public void SetOffset(Vector2 pixelOffset)
+        {
+            
+            _pixelOffset = pixelOffset;
+        }
+
         public void SetTarget(Transform target) => _transform = target;
     }
 

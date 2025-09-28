@@ -17,11 +17,18 @@ namespace FunnyBlox
 
         public void EnableConnection(int level)
         {
-            for (var i = 0; i < level; i++)
+            for (var i = 0; i <= level; i++)
             {
-                var shouldBeActive = i < level;
+                var shouldBeActive = i <= level;
+                Debug.LogError(shouldBeActive);
                 connections[i].SetActive(shouldBeActive);
             }
+        }
+
+        public void DisableAllConnections()
+        {
+            foreach (var connection in connections) 
+                connection.SetActive(false);
         }
     }
 }
