@@ -57,7 +57,8 @@ namespace FunnyBlox
         {
           if (hit.transform.TryGetComponent(out ConnectionPath connectionPath))
           {
-            connectionPath.Tower.OnDestroyConnection(hit.transform);
+            if (connectionPath.Tower.OwnerType == ETowerOwnerType.Player)
+              connectionPath.Tower.OnDestroyConnection(hit.transform);
           }
         }
       }

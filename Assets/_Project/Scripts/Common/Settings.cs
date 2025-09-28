@@ -7,5 +7,8 @@ namespace FunnyBlox
   {
     public string[] UnitPrefabPaths;
     public static bool SoundIsActive { get; set; } = true;
+
+    public Color[] ConnectionPathColor;
+    public Color[] AimingLineColor;
   }
 }

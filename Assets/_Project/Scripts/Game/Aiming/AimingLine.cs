@@ -5,6 +5,7 @@ namespace FunnyBlox
 {
   public class AimingLine : MonoBehaviour
   {
+    [SerializeField] private Settings _settings;
     [SerializeField] private List<Transform> _towersInTouched;
     private Material _aimingLineMaterial;
 
@@ -52,7 +53,7 @@ namespace FunnyBlox
       if (other.CompareTag("Tower") || other.CompareTag("Obstacle"))
       {
         _towersInTouched.Add(other.transform);
-        ColorizeLine();
+        ColorizeLine(_towersInTouched.Count > 2 ? _settings.AimingLineColor[1] : _settings.AimingLineColor[0]);
       }
     }
 
@@ -62,25 +63,17 @@ namespace FunnyBlox
     /// <param name="other"></param>
     private void OnTriggerExit(Collider other)
     {
-      if (other.CompareTag("Tower")|| other.CompareTag("Obstacle"))
+      if (other.CompareTag("Tower") || other.CompareTag("Obstacle"))
       {
         _towersInTouched.Remove(other.transform);
-        ColorizeLine();
+        ColorizeLine(_towersInTouched.Count > 2 ? _settings.AimingLineColor[1] : _settings.AimingLineColor[0]);
       }
     }
 
-    private void ColorizeLine()
+    private void ColorizeLine(Color color)
     {
-      if (_towersInTouched.Count > 2)
-      {
-        _aimingLineMaterial.SetColor("_LineColor", Color.grey);
-        _aimingLineMaterial.SetColor("_DotTint", Color.grey);
-      }
-      else
-      {
-        _aimingLineMaterial.SetColor("_LineColor", Color.cyan);
-        _aimingLineMaterial.SetColor("_DotTint", Color.cyan);
-      }
+      _aimingLineMaterial.SetColor("_LineColor", color);
+      _aimingLineMaterial.SetColor("_DotTint", color);
     }
   }
 }

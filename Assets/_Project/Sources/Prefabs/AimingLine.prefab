@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b07a40ded63479983e9ad783381e522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _settings: {fileID: 11400000, guid: 293861b953dd0a348a59d4509ad41b77, type: 2}
   _towersInTouched: []
 --- !u!65 &3374444264194483141
 BoxCollider:
