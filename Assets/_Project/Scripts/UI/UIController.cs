@@ -17,6 +17,7 @@ namespace FunnyBlox.UI
             var buildingInfo = Instantiate(_buildingInfoPrefab, _buildingInfoRoot.transform).GetComponent<BuildingInfo>();
             building.Visualization.Setup(buildingInfo);
             buildingInfo.SetTarget(building.transform);
+            _buildingInfos.Add(buildingInfo);
          }
       }
    }
