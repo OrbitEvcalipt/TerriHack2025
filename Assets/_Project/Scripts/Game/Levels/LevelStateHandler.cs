@@ -43,12 +43,13 @@ namespace FunnyBlox
 
     private void OnGameWin()
     {
+      UIController.Instance.InGameScreen.Hide();
       UIController.Instance.WinScreen.Show();
     }
 
     private void OnGameLose()
     {
-      Debug.LogError(1341);
+      UIController.Instance.InGameScreen.Hide();
       UIController.Instance.LoseScreen.Show();
     }
   }
