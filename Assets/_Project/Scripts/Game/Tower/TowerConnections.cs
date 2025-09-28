@@ -89,7 +89,8 @@ namespace FunnyBlox
       }
 
       _connections.Clear();
-      _selectableByFinger.enabled = true;
+      if (_selectableByFinger)
+        _selectableByFinger.enabled = true;
     }
   }
 }
