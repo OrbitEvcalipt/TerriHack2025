@@ -8,6 +8,7 @@ namespace FunnyBlox
   {
     public ETowerOwnerType OwnerType;
     public int HitPoints;
+    public bool IsActive;
 
     public EUnitType GetUnitType() => _unitData.UnitType;
     public int Attack => _unitData.Attack;
@@ -18,6 +19,7 @@ namespace FunnyBlox
 
     public void Spawn(ETowerOwnerType ownerType, Vector3 position, TowerController target)
     {
+      IsActive = true;
       OwnerType = ownerType;
       HitPoints = _unitData.HitPoints;
       transform.position = position;
@@ -27,6 +29,7 @@ namespace FunnyBlox
 
     public void Despawn()
     {
+      IsActive = false;
       _targetTower = null;
       transform.DOKill();
       PoolCollection.Unspawn(transform);
@@ -51,8 +54,21 @@ namespace FunnyBlox
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
-      if (other.CompareTag("Tower"))
+      if (other.CompareTag("Unit"))
       {
+        if (other.TryGetComponent(out UnitController unit))
+        {
+          if (!IsActive) return;
+          if (unit.OwnerType != OwnerType)
+          {
+            unit.HitPoints -= Attack;
+            if (unit.HitPoints <= 0)
+              unit.Despawn();
+            HitPoints -= unit.Attack;
+            if (HitPoints <= 0)
+              Despawn();
+          }
+        }
       }
     }
   }

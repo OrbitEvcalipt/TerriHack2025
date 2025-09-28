@@ -15,3 +15,9 @@ MonoBehaviour:
   UnitPrefabPaths:
   - Units/Unit_00
   - Units/Unit_01
+  ConnectionPathColor:
+  - {r: 0.13207865, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  AimingLineColor:
+  - {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 1}
+  - {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 1}
