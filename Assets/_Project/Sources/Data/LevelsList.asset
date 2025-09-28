@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LevelsList
   m_EditorClassIdentifier: 
   LevelsPath:
-  - Levels/Level_04
   - Levels/Level_01
   - Levels/Level_02
   - Levels/Level_03
+  - Levels/Level_04
