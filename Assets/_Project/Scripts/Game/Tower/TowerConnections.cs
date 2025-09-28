@@ -47,7 +47,8 @@ namespace FunnyBlox
 
       UpdateEnabledConnections();
 
-      towerTo.OnDestroyConnection(_towerController);
+      if (towerTo.OwnerType == _towerController.OwnerType)
+        towerTo.OnDestroyConnection(_towerController);
     }
 
     public void OnDestroyConnection(Transform path)
@@ -86,6 +87,7 @@ namespace FunnyBlox
       {
         Destroy(connection.ConnectionPath.gameObject);
       }
+
       _connections.Clear();
     }
   }
