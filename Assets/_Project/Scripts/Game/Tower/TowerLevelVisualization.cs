@@ -44,8 +44,8 @@ namespace FunnyBlox
         _vizualForLevel[i].transform.DOScale(Vector3.zero, 0.15f).SetEase(Ease.InQuint).OnComplete(() =>
         {
           _vizualForLevel[index].SetActive(index == level);
-          _anchorToTransform.SetPixelOffset(_pixelOffsets[index]);
           _vizualForLevel[index].transform.DOScale(Vector3.one, 0.15f).SetEase(Ease.OutBack).OnComplete(onComplete);
+          //_anchorToTransform.SetPixelOffset(_pixelOffsets[index]);
         });
       }
     }

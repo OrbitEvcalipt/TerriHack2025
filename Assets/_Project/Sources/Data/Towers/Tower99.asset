@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitType: 99
   ProgressionData:
+  - HitPoints: 0
+    FactorySpeed: 0.5
   - HitPoints: 15
-    FactorySpeed: 0.5
+    FactorySpeed: 0.6
   - HitPoints: 25
-    FactorySpeed: 0.5
+    FactorySpeed: 0.7
   - HitPoints: 35
-    FactorySpeed: 0.5
+    FactorySpeed: 0.8

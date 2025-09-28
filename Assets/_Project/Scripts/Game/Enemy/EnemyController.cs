@@ -29,7 +29,9 @@ namespace FunnyBlox
     private void ConnectTower()
     {
       var enemies = _towers
-        .Where(t => t != null && t.OwnerType == ETowerOwnerType.Enemy)
+        .Where(t => t != null
+                    && t.OwnerType == ETowerOwnerType.Enemy
+                    && t.TowerData.UnitType != EUnitType.UnitType_99)
         .ToList();
       if (enemies.Count == 0)
       {
@@ -37,14 +39,19 @@ namespace FunnyBlox
       }
 
       var towerFrom = enemies[Random.Range(0, enemies.Count)];
-      if (towerFrom.IsEnableConnections)
+      if (towerFrom.TowerConnections.IsEnableConnections)
       {
         var towerTo = _towers
-          .Where(t => t != null && t != towerFrom)
-          .OrderBy(t => Vector3.Distance(towerFrom.transform.position, t.transform.position))
+          .Where(t => t != null //не пустая
+                      && t != towerFrom // не башня из которой запускаем соединение
+                      && t.OwnerType != ETowerOwnerType.Enemy // башня не принадлежит врагу
+                      && !towerFrom.TowerConnections.Connections.Any(c => c.Tower == t) //башня ещё не присоединена к вражеской 
+                      )
+          .OrderBy(t => Vector3.Distance(towerFrom.transform.position, t.transform.position)) // отсортировали по удалённости от фражеской
           .FirstOrDefault();
 
-        towerFrom.OnCreateConnection(towerTo);
+        if (towerTo != null)
+          towerFrom.OnCreateConnection(towerTo);
       }
     }
   }

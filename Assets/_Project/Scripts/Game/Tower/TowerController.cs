@@ -1,5 +1,6 @@
 using FunnyBlox.Utils;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace FunnyBlox
 {
@@ -9,7 +10,7 @@ namespace FunnyBlox
     public ETowerOwnerType OwnerType;
     public int HitPoints;
     public int Level;
-    private TowerConnections _towerConnections;
+    [HideInInspector] public TowerConnections TowerConnections;
     private UnitsFactory _unitsFactory;
     private TowerLevelVisualization _visualization;
     [SerializeField] private ParticleSystem _selectionParticles;
@@ -20,12 +21,12 @@ namespace FunnyBlox
 
     private void Start()
     {
-      _towerConnections = GetComponent<TowerConnections>();
+      TowerConnections = GetComponent<TowerConnections>();
       _unitsFactory = GetComponent<UnitsFactory>();
       _visualization = GetComponent<TowerLevelVisualization>();
       Level = LevelTower();
       _visualization.UpdateVisual(Level, null);
-      SetOwner(OwnerType, start:true);
+      SetOwner(OwnerType, start: true);
       _selectionParticles.gameObject.SetActive(false);
     }
 
@@ -52,8 +53,6 @@ namespace FunnyBlox
         InputHandler.Instance.OnDeselectTower();
       }
     }
-
-    public bool IsEnableConnections => _towerConnections.IsEnableConnections;
     
     /// <summary>
     /// Создаём соединение с башней
@@ -61,18 +60,18 @@ namespace FunnyBlox
     /// <param name="towerTo"></param>
     public void OnCreateConnection(TowerController towerTo)
     {
-      _towerConnections.OnCreateConnection(towerTo);
+      TowerConnections.OnCreateConnection(towerTo);
       _unitsFactory.StartProduction();
     }
 
     public void OnDestroyConnection(Transform path)
     {
-      _towerConnections.OnDestroyConnection(path);
+      TowerConnections.OnDestroyConnection(path);
     }
-    
+
     public void OnDestroyConnection(TowerController tower)
     {
-      _towerConnections.OnDestroyConnection(tower);
+      TowerConnections.OnDestroyConnection(tower);
     }
 
     /// <summary>
@@ -183,7 +182,7 @@ namespace FunnyBlox
           _upgradeParticles.Play();
           AudioManager.PlayOneShotSFX(AudioDatabaseEnum.Game_UpgradeSFX);
         });
-        _towerConnections.UpdateEnabledConnections();
+        TowerConnections.UpdateEnabledConnections();
       }
     }
   }
